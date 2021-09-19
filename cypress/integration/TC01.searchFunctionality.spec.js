@@ -8,10 +8,10 @@ describe('Search Functionality', () => {
     cy.NavigateToEventLandingPage()
   })
 
-  it.skip('Search using submission name', () => {
+  it('Search using submission name', () => {
     cy.get('form').eq(1).type(eventPageData.name)
     cy.get('form > svg').eq(1).click()
-    cy.wait(5000)
+    cy.wait(10000)
     cy.get('p.sc-gsDJrp.kJiLCV').then(($submission) => {
       const submissionCount = $submission.text()
       expect(parseInt(submissionCount)).to.eq(1)
@@ -27,7 +27,7 @@ describe('Search Functionality', () => {
   it('Search using author name', () => {
     cy.get('form').eq(1).type(eventPageData.author)
     cy.get('form > svg').eq(1).click()
-    cy.wait(5000)
+    cy.wait(10000)
     cy.get('p.sc-gsDJrp.kJiLCV').then(($submission) => {
       const submissionCount = $submission.text()
       expect(parseInt(submissionCount)).to.eq(1)
