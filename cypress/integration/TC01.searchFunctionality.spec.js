@@ -9,7 +9,7 @@ describe('Search Functionality', () => {
   })
 
   it('Search using submission name', () => {
-    cy.get('form').eq(1).type(eventPageData.name)
+    cy.findAllByPlaceholderText('Search').eq(1).type(eventPageData.name)
     cy.get('form > svg').eq(1).click()
     cy.wait(10000)
     cy.get('p.sc-gsDJrp.kJiLCV').then(($submission) => {
@@ -25,7 +25,7 @@ describe('Search Functionality', () => {
   })
 
   it('Search using author name', () => {
-    cy.get('form').eq(1).type(eventPageData.author)
+    cy.findAllByPlaceholderText('Search').eq(1).type(eventPageData.author)
     cy.get('form > svg').eq(1).click()
     cy.wait(10000)
     cy.get('p.sc-gsDJrp.kJiLCV').then(($submission) => {
@@ -37,7 +37,7 @@ describe('Search Functionality', () => {
       expect(authorName).to.eq(eventPageData.author + ' ')
     }).click()
     cy.wait(10000)
-    cy.get('div > span > p').contains(eventPageData.author, { timeout: 5000 }).should('be.visible')
+    cy.findByText(eventPageData.author).should('be.visible')
   })
 
 
