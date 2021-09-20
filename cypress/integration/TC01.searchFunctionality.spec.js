@@ -1,11 +1,18 @@
-
-describe('Search Functionality', () => {
+describe('Search and Clear Search Functionality', () => {
   let eventPageData
   beforeEach(() => {
     cy.fixture('eventPage').then((eventData) => {
       eventPageData = eventData
     })
     cy.NavigateToEventLandingPage()
+  })
+
+  afterEach(() => {
+    // clear search test
+    cy.go('back')
+    cy.findByText('Clear search').click()
+    cy.wait(3000)
+    cy.findByText(eventPageData.totalSubmissionCount).should('be.visible')
   })
 
   it('Search using submission name', () => {
