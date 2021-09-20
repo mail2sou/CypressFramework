@@ -34,7 +34,6 @@ describe('Filter and Clear Filter Functionality', () => {
             cy.log(submissionCount)
             expect(submissionCount).to.eq(filterCount)
         })
-
     })
 
 })
