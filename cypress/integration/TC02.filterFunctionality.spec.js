@@ -44,7 +44,7 @@ describe('Filter and Clear Filter Functionality', () => {
         let filterCount
         cy.findByText('Add filter').click()
         cy.findByText(eventPageData.keywordFilter).click()
-        cy.wait(5000)
+        cy.wait(7000)
         cy.findAllByText(eventPageData.keywordFilter).eq(1).parent().children('span.sc-gsDJrp.fbXlhZ').then(($filter) => {
             filterCount = $filter.text()
             filterCount = filterCount.match(/\d+/)[0]

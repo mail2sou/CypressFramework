@@ -44,8 +44,7 @@ describe('Search and Clear Search Functionality', () => {
       expect(authorName).to.eq(eventPageData.author + ' ')
     }).click()
     cy.wait(10000)
-    cy.findByText(eventPageData.author).should('be.visible')
+    cy.get('div > span > p').contains(eventPageData.author, { timeout: 10000 }).should('be.visible')
   })
-
 
 })
