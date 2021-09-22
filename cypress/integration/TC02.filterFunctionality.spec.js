@@ -16,16 +16,12 @@ describe('Filter and Clear Filter Functionality', () => {
         cy.findByText(eventPageData.totalSubmissionCount).should('be.visible')
     })
 
-    it('Filter using a organizations', () => {
+    it('Filter using a keyword', () => {
         let filterCount
         cy.findByText('Add filter').click()
-        cy.findByText('Keywords').click()
-        cy.findByText('Organizations').click()
-        cy.findAllByPlaceholderText('Search for organizations').type(eventPageData.organizationFilter)
-        cy.wait(5000)
-        cy.get('div.MuiCollapse-container.MuiCollapse-entered > div > div > div > div > div.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-button > div').click()
-        cy.wait(5000)
-        cy.get('div.MuiCollapse-container.MuiCollapse-entered > div > div > div > div > div.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-button > div').parent().children('span.sc-gsDJrp.fbXlhZ').then(($filter) => {
+        cy.findByText(eventPageData.keywordFilter).click()
+        cy.wait(7000)
+        cy.findAllByText(eventPageData.keywordFilter).eq(1).parent().children('span.sc-gsDJrp.fbXlhZ').then(($filter) => {
             filterCount = $filter.text()
             filterCount = filterCount.match(/\d+/)[0]
             cy.log(filterCount)
@@ -40,12 +36,16 @@ describe('Filter and Clear Filter Functionality', () => {
         })
     })
 
-    it('Filter using a keyword', () => {
+    it('Filter using a organizations', () => {
         let filterCount
         cy.findByText('Add filter').click()
-        cy.findByText(eventPageData.keywordFilter).click()
-        cy.wait(7000)
-        cy.findAllByText(eventPageData.keywordFilter).eq(1).parent().children('span.sc-gsDJrp.fbXlhZ').then(($filter) => {
+        cy.findByText('Keywords').click()
+        cy.findByText('Organizations').click()
+        cy.findAllByPlaceholderText('Search for organizations').type(eventPageData.organizationFilter)
+        cy.wait(5000)
+        cy.get('div.MuiCollapse-container.MuiCollapse-entered > div > div > div > div > div.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-button > div').click()
+        cy.wait(5000)
+        cy.get('div.MuiCollapse-container.MuiCollapse-entered > div > div > div > div > div.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-button > div').parent().children('span.sc-gsDJrp.fbXlhZ').then(($filter) => {
             filterCount = $filter.text()
             filterCount = filterCount.match(/\d+/)[0]
             cy.log(filterCount)

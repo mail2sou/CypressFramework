@@ -11,7 +11,7 @@
 1. Framework: Cypress.io (with Cypress Testing Library)
 2. Node.JS version: v15.14.0
 3. NPM version: 7.24.0
-4. IDE used: VS Code
+4. IDE used: VS Code 1.60.1
 
 <B>» Steps to use this project:</B>
 
